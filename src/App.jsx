@@ -5,117 +5,80 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isSubscribed, setIsSubscribed] = useState(false)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="page-container">
+      {/* Barre de navigation supérieure */}
+      <header className="navbar">
+        <div className="nav-logo">
+          <img src={viteLogo} className="logo-mini" alt="Vite logo" />
+          <span className="brand-name">ViteNext</span>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+        <nav className="nav-links">
+          <a href="https://vite.dev/" target="_blank" rel="noreferrer">Vite</a>
+          <a href="https://react.dev/" target="_blank" rel="noreferrer">React</a>
+          <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer" className="nav-btn-git">
+            GitHub
+          </a>
+        </nav>
+      </header>
+
+      {/* Section Héro Principale */}
+      <main className="hero-section">
+        <div className="hero-text-content">
+          <div className="badge">Propulsé par Vite & React</div>
+          <h1 className="hero-title">
+            Créez des applications <span className="highlight">ultra-rapides</span>
+          </h1>
+          <p className="hero-subtitle">
+            Modifiez <code>src/App.jsx</code> et observez les changements instantanément grâce au HMR (Hot Module Replacement). Le futur du web commence ici.
           </p>
+          
+          {/* Zone d'action interactive */}
+          <div className="cta-container">
+            <button
+              type="button"
+              className={`cta-button ${isSubscribed ? 'success' : ''}`}
+              onClick={() => setIsSubscribed(!isSubscribed)}
+            >
+              {isSubscribed ? "✓ Vous êtes inscrit !" : "Commencer gratuitement"}
+            </button>
+          </div>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        {/* Conteneur de l'image Hero avec badges flottants */}
+        <div className="hero-image-container">
+          <div className="image-wrapper">
+            <img src={heroImg} className="main-hero-image" alt="Illustration principale" />
+            <img src={reactLogo} className="floating-icon react" alt="React logo" />
+            <img src={viteLogo} className="floating-icon vite" alt="Vite logo" />
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      </main>
+
+      {/* Section Communauté & Réseaux */}
+      <section className="community-section">
+        <h2>Rejoignez l'écosystème</h2>
+        <div className="social-links-grid">
+          <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer" className="social-card">
+            <use href="/icons.svg#discord-icon"></use>
+            <span>Discord</span>
+          </a>
+          <a href="https://x.com/vite_js" target="_blank" rel="noreferrer" className="social-card">
+            <span>X.com</span>
+          </a>
+          <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer" className="social-card">
+            <span>Bluesky</span>
+          </a>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* Pied de page */}
+      <footer className="footer">
+        <p>© 2026 ViteNext. Tous droits réservés.</p>
+      </footer>
+    </div>
   )
 }
 
